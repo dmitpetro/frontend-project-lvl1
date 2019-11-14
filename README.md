@@ -2,4 +2,4 @@
 
 [![Build Status](https://travis-ci.org/dmitpetro/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/dmitpetro/frontend-project-lvl1)
 
-[![asciicast](https://asciinema.org/a/Rzr3kQ3ulSDLTql0O89jU4NNx.svg)](https://asciinema.org/a/Rzr3kQ3ulSDLTql0O89jU4NNx)
+[![asciicast](https://asciinema.org/a/ZjwZU8N2MVEHdT47t3xedagbz.svg)](https://asciinema.org/a/ZjwZU8N2MVEHdT47t3xedagbz)
