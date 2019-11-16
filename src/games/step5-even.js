@@ -3,10 +3,8 @@ import * as bgutils from '../brain-games-utils';
 
 
 const runStep5EvenGame = () => {
-  const MIN_RANDOM = 0;
-  const MAX_RANDOM = 100;
   const getQuestion = () => {
-    const num = bgutils.getRandomInt(MIN_RANDOM, MAX_RANDOM);
+    const num = bgutils.getRandomInt(bgutils.MIN_RANDOM, bgutils.MAX_RANDOM);
     return bgutils.pair(num, (bgutils.isEven(num) ? 'yes' : 'no'));
   };
 
