@@ -1,6 +1,7 @@
 export const MIN_RANDOM = 0;
 export const MAX_RANDOM = 100;
-export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+// eslint-disable-next-line max-len
+export const getRandomInt = (min = MIN_RANDOM, max = MAX_RANDOM) => Math.floor(Math.random() * (max - min)) + min;
 export const isEven = (someNumber) => ((someNumber % 2 === 0));
 export const pair = (x, y) => (f) => f(x, y);
 export const car = (f) => f((x) => x);
@@ -34,4 +35,13 @@ export const gcd = (a, b) => {
     }
   } while (car(pairFactorA) !== 1 || car(pairFactorB) !== 1);
   return res;
+};
+
+export const isPrime = (num) => {
+  for (let i = 2; i < num; i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
 };
