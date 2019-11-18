@@ -2,6 +2,10 @@
   "name": "brain-games",
   "version": "1.0.0",
   "description": "ferst app on hexlet",
+  "keywords": [
+    "hexlet",
+    "brain games"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,7 +27,7 @@
     "type": "git",
     "url": "git+https://github.com/dmitpetro/frontend-project-lvl1.git"
   },
-  "author": "",
+  "author": "dmit_petro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dmitpetro/frontend-project-lvl1/issues"
