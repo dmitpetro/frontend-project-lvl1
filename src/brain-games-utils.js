@@ -1,7 +1,7 @@
-export const MIN_RANDOM = 0;
-export const MAX_RANDOM = 100;
+export const minRandom = 0;
+export const maxRandom = 100;
 // eslint-disable-next-line max-len
-export const getRandomInt = (min = MIN_RANDOM, max = MAX_RANDOM) => Math.floor(Math.random() * (max - min)) + min;
+export const getRandomInt = (min = minRandom, max = maxRandom) => Math.floor(Math.random() * (max - min)) + min;
 export const isEven = (someNumber) => ((someNumber % 2 === 0));
 export const pair = (x, y) => (f) => f(x, y);
 export const car = (f) => f((x) => x);

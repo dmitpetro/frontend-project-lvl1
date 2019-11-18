@@ -3,10 +3,9 @@ import * as bgutils from '../brain-games-utils';
 
 
 const runStep7GCDGame = () => {
-  console.log(`gcd = ${bgutils.gcd(1000, 3267)}`);
   const getQuestion = () => {
-    const num1 = bgutils.getRandomInt(bgutils.MIN_RANDOM, bgutils.MAX_RANDOM);
-    const num2 = bgutils.getRandomInt(bgutils.MIN_RANDOM, bgutils.MAX_RANDOM);
+    const num1 = bgutils.getRandomInt(bgutils.minRandom, bgutils.maxRandom);
+    const num2 = bgutils.getRandomInt(bgutils.minRandom, bgutils.maxRandom);
     const trueAnswer = `${bgutils.gcd(num1, num2)}`;
     const question = `${num1}  ${num2}`;
 

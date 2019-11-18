@@ -4,8 +4,8 @@ import * as bgutils from '../brain-games-utils';
 
 const runStep6CalcGame = () => {
   const getQuestion = () => {
-    const num1 = bgutils.getRandomInt(bgutils.MIN_RANDOM, bgutils.MAX_RANDOM);
-    const num2 = bgutils.getRandomInt(bgutils.MIN_RANDOM, bgutils.MAX_RANDOM);
+    const num1 = bgutils.getRandomInt();
+    const num2 = bgutils.getRandomInt();
     let trueAnswer = '';
     let question = '';
 
