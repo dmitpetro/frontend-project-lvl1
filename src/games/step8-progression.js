@@ -3,7 +3,6 @@ import * as bgutils from '../brain-games-utils';
 
 
 const runStep8ProgressionGame = () => {
-  console.log(`gcd = ${bgutils.gcd(1000, 3267)}`);
   const getQuestion = () => {
     const maxLengthProgression = 10;
     const minStepProgression = 1;
