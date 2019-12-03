@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import runStep6CalcGame from '../games/step6-calc';
+import runCalcGame from '../games/step6-calc';
 
 
-runStep6CalcGame();
+runCalcGame();

@@ -2,14 +2,15 @@ import runGame from './gameFlow';
 import * as bgutils from '../brain-games-utils';
 
 
-const runStep8primeGame = () => {
-  const getQuestion = () => {
-    const num = bgutils.getRandomInt();
-    const trueAnswer = bgutils.isPrime(num) ? 'yes' : 'no';
-    return bgutils.pair(num, trueAnswer);
+const runPrimeGame = () => {
+  const getQuestionBuilder = () => {
+    const question = bgutils.getRandomInt();
+    const trueAnswer = bgutils.isPrime(question) ? 'yes' : 'no';
+    const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
+    return pairQuestAnswer;
   };
-
-  runGame(getQuestion, 'Answer "yes" if given number is prime. Otherwise answer "no".');
+  const rulesGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  runGame(getQuestionBuilder, rulesGame);
 };
 
-export default runStep8primeGame;
+export default runPrimeGame;

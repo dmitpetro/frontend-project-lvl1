@@ -1,12 +1,13 @@
 import runGame from './gameFlow';
 import * as bgutils from '../brain-games-utils';
 
+const maxLengthProgression = 10;
+const minStepProgression = 1;
+const maxStepProgression = 10;
 
-const runStep8ProgressionGame = () => {
-  const getQuestion = () => {
-    const maxLengthProgression = 10;
-    const minStepProgression = 1;
-    const maxStepProgression = 10;
+
+const runProgressionGame = () => {
+  const getQuestionBuilder = () => {
     const missedPosition = bgutils.getRandomInt(0, maxLengthProgression - 1);
     const startProgression = bgutils.getRandomInt(bgutils.minRandom, bgutils.maxRandom);
     const stepProgression = bgutils.getRandomInt(minStepProgression, maxStepProgression);
@@ -16,10 +17,13 @@ const runStep8ProgressionGame = () => {
       question = `${question} ${i === missedPosition ? '..' : (startProgression + stepProgression * (i - 1))}`;
     }
 
-    return bgutils.pair(question, trueAnswer);
+    const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
+    return pairQuestAnswer;
   };
 
-  runGame(getQuestion, 'What number is missing in the progression?');
+
+  const rulesGame = 'What number is missing in the progression?';
+  runGame(getQuestionBuilder, rulesGame);
 };
 
-export default runStep8ProgressionGame;
+export default runProgressionGame;

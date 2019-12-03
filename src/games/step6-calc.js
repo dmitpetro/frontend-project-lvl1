@@ -2,33 +2,42 @@ import runGame from './gameFlow';
 import * as bgutils from '../brain-games-utils';
 
 
-const runStep6CalcGame = () => {
-  const getQuestion = () => {
-    const num1 = bgutils.getRandomInt();
-    const num2 = bgutils.getRandomInt();
-    let trueAnswer = '';
-    let question = '';
-
-    switch (bgutils.getRandomInt(0, 2)) {
-      case 0:// +
-        question = `${num1} + ${num2}`;
-        trueAnswer = `${num1 + num2}`;
-        break;
-      case 1:// -
-        question = `${num1} - ${num2}`;
-        trueAnswer = `${num1 - num2}`;
-        break;
-      case 2:// *
-        question = `${num1} * ${num2}`;
-        trueAnswer = `${num1 * num2}`;
-        break;
-      default:
-        break;
-    }
-    return bgutils.pair(question, trueAnswer);
+const runCalcGame = () => {
+  const getQuestAnswerForSum = (x, y) => {
+    const question = `${x} + ${y}`;
+    const trueAnswer = `${x + y}`;
+    const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
+    return pairQuestAnswer;
+  };
+  const getQuestAnswerForSub = (x, y) => {
+    const question = `${x} - ${y}`;
+    const trueAnswer = `${x - y}`;
+    const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
+    return pairQuestAnswer;
+  };
+  const getQuestAnswerForMult = (x, y) => {
+    const question = `${x} * ${y}`;
+    const trueAnswer = `${x * y}`;
+    const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
+    return pairQuestAnswer;
   };
 
-  runGame(getQuestion, 'What is the result of the expression?');
+  const getRandomOperation = (operations) => {
+    const randomIndex = bgutils.getRandomInt(0, operations.length);
+    return operations[randomIndex];
+  };
+
+  const getQuestionBuilder = () => {
+    const num1 = bgutils.getRandomInt();
+    const num2 = bgutils.getRandomInt();
+    // eslint-disable-next-line max-len
+    const questAnswerGenerator = getRandomOperation([getQuestAnswerForSum, getQuestAnswerForSub, getQuestAnswerForMult]);
+    const pairQuestAnswer = questAnswerGenerator(num1, num2);
+    return pairQuestAnswer;
+  };
+  const rulesGame = 'What is the result of the expression?';
+
+  runGame(getQuestionBuilder, rulesGame);
 };
 
-export default runStep6CalcGame;
+export default runCalcGame;

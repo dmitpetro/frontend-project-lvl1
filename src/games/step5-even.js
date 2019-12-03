@@ -1,14 +1,18 @@
 import runGame from './gameFlow';
 import * as bgutils from '../brain-games-utils';
 
+const isEven = (someNumber) => ((someNumber % 2 === 0));
 
-const runStep5EvenGame = () => {
-  const getQuestion = () => {
-    const num = bgutils.getRandomInt();
-    return bgutils.pair(num, (bgutils.isEven(num) ? 'yes' : 'no'));
+const runEvenGame = () => {
+  const getQuestionBuilder = () => {
+    const question = bgutils.getRandomInt();
+    const trueAnswer = isEven(question) ? 'yes' : 'no';
+    const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
+    return pairQuestAnswer;
   };
 
-  runGame(getQuestion, 'Answer "yes" if the number is even, otherwise answer "no".');
+  const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+  runGame(getQuestionBuilder, rulesGame);
 };
 
-export default runStep5EvenGame;
+export default runEvenGame;
