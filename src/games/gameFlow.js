@@ -8,7 +8,6 @@ const runGame = (questionGenerator, titleQuestion) => {
   console.log(`\nWelcome to the Brain Games!\n${titleQuestion}\n`);
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!\n`);
-  let isSuccessStopGame = true;
   for (let i = 0; i < NUMBER_SUCCECS_QUESTIONS_FOR_FINISH; i += 1) {
     const quest = questionGenerator();
     const q = bgutils.getQuestion(quest);
@@ -19,14 +18,10 @@ const runGame = (questionGenerator, titleQuestion) => {
       console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueAnswer}'. `);
-      isSuccessStopGame = false;
-      break;
+      console.log(`Let's try again, ${name}!`);
+      return;
     }
   }
-  if (isSuccessStopGame) {
-    console.log(`Congratulations, ${name}!`);
-  } else {
-    console.log(`Let's try again, ${name}!`);
-  }
+  console.log(`Congratulations, ${name}!`);
 };
 export default runGame;
