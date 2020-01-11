@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import * as bgutils from '../brain-games-utils';
+import * as bgutils from './brain-games-utils';
 
 const NUMBER_SUCCECS_QUESTIONS_FOR_FINISH = 3;
 
