@@ -7,7 +7,6 @@
         }
     },
     "rules": {
-        "semi": "error",
         "no-console": "off"
     },
     "extends": [

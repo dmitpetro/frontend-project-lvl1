@@ -1,6 +1,8 @@
 import runGame from '../gameFlow';
 import * as bgutils from '../brain-games-utils';
 
+const gameRule = 'What number is missing in the progression?';
+
 const maxLengthProgression = 10;
 const minStepProgression = 1;
 const maxStepProgression = 10;
@@ -12,16 +14,14 @@ const questAnswerGenerator = () => {
   const trueAnswer = (startProgression + stepProgression * missedPosition).toString();
   let question = '';
   for (let i = 0; i < maxLengthProgression; i += 1) {
-    question = `${question} ${i === missedPosition ? '..' : (startProgression + stepProgression * i)}`;
+    question += `${i === 0 ? '' : ' '}${i === missedPosition ? '..' : (startProgression + stepProgression * i)}`;
   }
-
   const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
   return pairQuestAnswer;
 };
 
 const runProgressionGame = () => {
-  const rulesGame = 'What number is missing in the progression?';
-  runGame(questAnswerGenerator, rulesGame);
+  runGame(questAnswerGenerator, gameRule);
 };
 
 export default runProgressionGame;

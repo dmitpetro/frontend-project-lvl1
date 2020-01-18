@@ -2,42 +2,22 @@ import * as pairsData from '@hexlet/pairs-data';
 import runGame from '../gameFlow';
 import * as bgutils from '../brain-games-utils';
 
-const pairQuestAnswerForSum = (x, y) => {
-  const question = `${x} + ${y}`;
-  const trueAnswer = `${x + y}`;
-  const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
-  return pairQuestAnswer;
-};
-
-const pairQuestAnswerForSub = (x, y) => {
-  const question = `${x} - ${y}`;
-  const trueAnswer = `${x - y}`;
-  const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
-  return pairQuestAnswer;
-};
-
-const pairQuestAnswerForMult = (x, y) => {
-  const question = `${x} * ${y}`;
-  const trueAnswer = (x * y).toString();
-  const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
-  return pairQuestAnswer;
-};
-
+const gameRule = 'What is the result of the expression?';
 
 const questAnswerGenerator = () => {
   const num1 = bgutils.getRandomInt();
   const num2 = bgutils.getRandomInt();
 
-  let listPairGenerations = pairsData.l(pairQuestAnswerForSum);
-  listPairGenerations = pairsData.cons(pairQuestAnswerForSub, listPairGenerations);
-  listPairGenerations = pairsData.cons(pairQuestAnswerForMult, listPairGenerations);
-  const pairQuestAnswer = pairsData.random(listPairGenerations)(num1, num2);
+  const pairMult = bgutils.pairQuestAnswer(`${num1} * ${num2}`, (num1 * num2).toString());
+  const pairSum = bgutils.pairQuestAnswer(`${num1} + ${num2}`, (num1 + num2).toString());
+  const pairSub = bgutils.pairQuestAnswer(`${num1} - ${num2}`, (num1 - num2).toString());
+
+  const pairQuestAnswer = pairsData.random(pairsData.l(pairMult, pairSum, pairSub));
   return pairQuestAnswer;
 };
 
 const runCalcGame = () => {
-  const rulesGame = 'What is the result of the expression?';
-  runGame(questAnswerGenerator, rulesGame);
+  runGame(questAnswerGenerator, gameRule);
 };
 
 export default runCalcGame;

@@ -1,6 +1,8 @@
 import runGame from '../gameFlow';
 import * as bgutils from '../brain-games-utils';
 
+const gameRule = 'Find the greatest common divisor of given numbers.';
+
 const gcd = (a, b) => (b ? gcd(b, a % b) : a);
 
 const questAnswerGenerator = () => {
@@ -14,8 +16,7 @@ const questAnswerGenerator = () => {
 };
 
 const runGCDGame = () => {
-  const rulesGame = 'Find the greatest common divisor of given numbers.';
-  runGame(questAnswerGenerator, rulesGame);
+  runGame(questAnswerGenerator, gameRule);
 };
 
 export default runGCDGame;
