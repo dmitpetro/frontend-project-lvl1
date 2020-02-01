@@ -1,22 +1,21 @@
 import runGame from '../gameFlow';
-import * as bgutils from '../brain-games-utils';
+import { getRandomInt, makePairQuestAnswer } from '../brainGamesUtils';
 
-const gameRule = 'Find the greatest common divisor of given numbers.';
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const gcd = (a, b) => (b ? gcd(b, a % b) : a);
 
-const questAnswerGenerator = () => {
-  const num1 = bgutils.getRandomInt();
-  const num2 = bgutils.getRandomInt();
+const getQuestAnswerGenerator = () => {
+  const num1 = getRandomInt();
+  const num2 = getRandomInt();
   const trueAnswer = gcd(num1, num2).toString();
   const question = `${num1}  ${num2}`;
 
-  const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
-  return pairQuestAnswer;
+  return makePairQuestAnswer(question, trueAnswer);
 };
 
 const runGCDGame = () => {
-  runGame(questAnswerGenerator, gameRule);
+  runGame(getQuestAnswerGenerator, gameDescription);
 };
 
 export default runGCDGame;

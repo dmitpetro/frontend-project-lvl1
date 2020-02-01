@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "readline-sync": "^1.4.10",
+    "@hexlet/pairs": "^1.0.10",
     "@hexlet/pairs-data": "^1.0.9"
   }
 }

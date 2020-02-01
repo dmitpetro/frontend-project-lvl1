@@ -1,23 +1,25 @@
-import * as pairsData from '@hexlet/pairs-data';
+import { l, random } from '@hexlet/pairs-data';
+import { cdr, car, cons } from '@hexlet/pairs';
 import runGame from '../gameFlow';
-import * as bgutils from '../brain-games-utils';
+import { getRandomInt, makePairQuestAnswer } from '../brainGamesUtils';
 
-const gameRule = 'What is the result of the expression?';
+const gameDescription = 'What is the result of the expression?';
 
-const questAnswerGenerator = () => {
-  const num1 = bgutils.getRandomInt();
-  const num2 = bgutils.getRandomInt();
+const getQuestAnswerGenerator = () => {
+  const num1 = getRandomInt();
+  const num2 = getRandomInt();
 
-  const pairMult = bgutils.pairQuestAnswer(`${num1} * ${num2}`, (num1 * num2).toString());
-  const pairSum = bgutils.pairQuestAnswer(`${num1} + ${num2}`, (num1 + num2).toString());
-  const pairSub = bgutils.pairQuestAnswer(`${num1} - ${num2}`, (num1 - num2).toString());
+  const listOpAndFunc = l(cons('+', (x, y) => x + y), cons('-', (x, y) => x - y), cons('*', (x, y) => x * y));
+  const pairOpAndFunc = random(listOpAndFunc);
 
-  const pairQuestAnswer = pairsData.random(pairsData.l(pairMult, pairSum, pairSub));
-  return pairQuestAnswer;
+  const question = `${num1} ${car(pairOpAndFunc)} ${num2}`;
+  const trueAnswer = cdr(pairOpAndFunc)(num1, num2).toString();
+
+  return makePairQuestAnswer(question, trueAnswer);
 };
 
 const runCalcGame = () => {
-  runGame(questAnswerGenerator, gameRule);
+  runGame(getQuestAnswerGenerator, gameDescription);
 };
 
 export default runCalcGame;

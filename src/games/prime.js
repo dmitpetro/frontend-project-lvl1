@@ -1,7 +1,8 @@
 import runGame from '../gameFlow';
-import * as bgutils from '../brain-games-utils';
+import { getRandomInt, makePairQuestAnswer } from '../brainGamesUtils';
 
-const gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   if (num <= 1) return false;
@@ -13,15 +14,14 @@ const isPrime = (num) => {
   return true;
 };
 
-const questAnswerGenerator = () => {
-  const question = bgutils.getRandomInt();
+const getQuestAnswerGenerator = () => {
+  const question = getRandomInt();
   const trueAnswer = isPrime(question) ? 'yes' : 'no';
-  const pairQuestAnswer = bgutils.pairQuestAnswer(question, trueAnswer);
-  return pairQuestAnswer;
+  return makePairQuestAnswer(question, trueAnswer);
 };
 
 const runPrimeGame = () => {
-  runGame(questAnswerGenerator, gameRule);
+  runGame(getQuestAnswerGenerator, gameDescription);
 };
 
 export default runPrimeGame;
