@@ -1,5 +1,5 @@
 import runGame from '../gameFlow';
-import { getRandomInt, makePairQuestAnswer } from '../brainGamesUtils';
+import { getRandomInt, makeQuestionAndAnswer } from '../brainGamesUtils';
 
 const gameDescription = 'What number is missing in the progression?';
 
@@ -7,20 +7,23 @@ const lengthProgression = 10;
 const minStepProgression = 1;
 const maxStepProgression = 10;
 
-const questAnswerGenerator = () => {
+const getQuestionAnswer = () => {
   const missedPosition = getRandomInt(0, lengthProgression - 1);
   const startProgression = getRandomInt();
   const stepProgression = getRandomInt(minStepProgression, maxStepProgression);
   const trueAnswer = (startProgression + stepProgression * missedPosition).toString();
   let question = '';
   for (let i = 0; i < lengthProgression; i += 1) {
-    question += `${i === 0 ? '' : ' '}${i === missedPosition ? '..' : (startProgression + stepProgression * i)}`;
+    const separator = i === 0 ? '' : ' ';
+    const elementProgression = i === missedPosition ? '..' : (startProgression + stepProgression * i);
+
+    question = `${question}${separator}${elementProgression}`;
   }
-  return makePairQuestAnswer(question, trueAnswer);
+  return makeQuestionAndAnswer(question, trueAnswer);
 };
 
 const runProgressionGame = () => {
-  runGame(questAnswerGenerator, gameDescription);
+  runGame(getQuestionAnswer, gameDescription);
 };
 
 export default runProgressionGame;

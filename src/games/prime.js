@@ -1,6 +1,5 @@
 import runGame from '../gameFlow';
-import { getRandomInt, makePairQuestAnswer } from '../brainGamesUtils';
-
+import { getRandomInt, makeQuestionAndAnswer } from '../brainGamesUtils';
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -14,14 +13,14 @@ const isPrime = (num) => {
   return true;
 };
 
-const getQuestAnswerGenerator = () => {
+const getQuestionAnswer = () => {
   const question = getRandomInt();
   const trueAnswer = isPrime(question) ? 'yes' : 'no';
-  return makePairQuestAnswer(question, trueAnswer);
+  return makeQuestionAndAnswer(question, trueAnswer);
 };
 
 const runPrimeGame = () => {
-  runGame(getQuestAnswerGenerator, gameDescription);
+  runGame(getQuestionAnswer, gameDescription);
 };
 
 export default runPrimeGame;
